@@ -1,8 +1,9 @@
 // A hook that logs service method before, after and error
-const logger = require('winston');
+import * as logger from 'winston';
+import { HookProps } from 'feathers-hooks';
 
-module.exports = function () {
-  return function (hook) {
+export function log() {
+  return function (hook: HookProps<any> & { path: string, error: Error }) {
     let message = `${hook.type}: ${hook.path} - Method: ${hook.method}`;
 
     if (hook.type === 'error') {
@@ -18,7 +19,7 @@ module.exports = function () {
     }
 
     if (hook.error) {
-      logger.error(hook.error);
+      logger.error(hook.error.message);
     }
   };
 };

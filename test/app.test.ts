@@ -1,6 +1,7 @@
-const assert = require('assert');
-const rp = require('request-promise');
-const app = require('../src/app');
+import * as assert from 'assert';
+import * as rp from 'request-promise';
+import { StatusCodeError } from 'request-promise/errors';
+import { app } from '../src/app';
 
 describe('Feathers application tests', () => {
   before(function(done) {
@@ -13,7 +14,7 @@ describe('Feathers application tests', () => {
   });
 
   it('starts and shows the index page', () => {
-    return rp('http://localhost:3030').then(body =>
+    return rp('http://localhost:3030').then((body: string) =>
       assert.ok(body.indexOf('<html>') !== -1)
     );
   });
@@ -25,7 +26,7 @@ describe('Feathers application tests', () => {
         headers: {
           'Accept': 'text/html'
         }
-      }).catch(res => {
+      }).catch((res: StatusCodeError) => {
         assert.equal(res.statusCode, 404);
         assert.ok(res.error.indexOf('<html>') !== -1);
       });
@@ -35,7 +36,7 @@ describe('Feathers application tests', () => {
       return rp({
         url: 'http://localhost:3030/path/to/nowhere',
         json: true
-      }).catch(res => {
+      }).catch((res: StatusCodeError) => {
         assert.equal(res.statusCode, 404);
         assert.equal(res.error.code, 404);
         assert.equal(res.error.message, 'Page not found');

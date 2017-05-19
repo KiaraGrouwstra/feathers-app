@@ -1,10 +1,9 @@
-/* eslint-disable no-console */
-const logger = require('winston');
-const app = require('./app');
+import * as logger from 'winston';
+import { app } from './app';
 const port = app.get('port');
 const server = app.listen(port);
 
-process.on('unhandledRejection', (reason, p) =>
+process.on('unhandledRejection', (reason: string, p: Promise<any>) =>
   logger.error('Unhandled Rejection at: Promise ', p, reason)
 );
 

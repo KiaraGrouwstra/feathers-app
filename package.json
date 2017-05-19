@@ -21,16 +21,15 @@
     "yarn": ">= 0.18.0"
   },
   "scripts": {
-    "test": "npm run eslint && npm run mocha",
-    "eslint": "eslint src/. test/. --config .eslintrc.json",
-    "start": "node src/",
-    "mocha": "mocha test/ --recursive"
+    "test": "npm run lint && npm run mocha",
+    "lint": "tslint src/. test/. --config tslint.json",
+    "start": "ts-node src/",
+    "mocha": "mocha --require ts-node/register test/**/*.test.ts"
   },
   "dependencies": {
     "body-parser": "^1.17.2",
     "compression": "^1.6.2",
     "cors": "^2.8.3",
-    "eslint": "^3.19.0",
     "feathers": "^2.1.2",
     "feathers-configuration": "^0.4.1",
     "feathers-errors": "^2.8.0",
@@ -39,10 +38,24 @@
     "feathers-rest": "^1.7.2",
     "feathers-socketio": "^2.0.0",
     "helmet": "^3.6.0",
-    "mocha": "^3.4.1",
     "request": "^2.81.0",
     "request-promise": "^4.2.1",
     "serve-favicon": "^2.4.3",
     "winston": "^2.3.1"
+  },
+  "devDependencies": {
+    "@types/body-parser": "^1.16.3",
+    "@types/compression": "0.0.33",
+    "@types/cors": "^2.8.1",
+    "@types/helmet": "0.0.35",
+    "@types/mocha": "^2.2.41",
+    "@types/npm": "^2.0.28",
+    "@types/request-promise": "^4.1.33",
+    "@types/winston": "^2.3.2",
+    "mocha": "^3.4.1",
+    "ts-lint": "^4.5.1",
+    "ts-node": "^3.0.4",
+    "tslint": "^5.2.0",
+    "typescript": "^2.3.2"
   }
 }
