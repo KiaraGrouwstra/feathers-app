@@ -19,15 +19,15 @@ export const app = <feathers.Application & { hooks: (hooks: HooksObject) => void
 
 // Load app configuration
 app.configure(configuration(path.join(__dirname, '..')));
-// Enable CORS, security, compression, favicon and body parsing
+// Enable CORS, security, compression and body parsing
 app.use(cors());
 app.use(helmet());
 app.use(compress());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
-app.use(favicon(path.join(app.get('public'), 'favicon.ico')));
 // Host the public folder
-app.use('/', feathers.static(app.get('public')));
+
+// app.use('/', feathers.static(app.get('public')));
 
 // Set up Plugins and providers
 app.configure(hooks());
