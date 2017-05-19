@@ -1,7 +1,6 @@
 import { HooksObject } from 'feathers-hooks';
-import { log } from './hooks/logger';
 
-export const appHooks: HooksObject = {
+export const hooks: HooksObject = {
   before: {
     all: [],
     find: [],
@@ -13,7 +12,7 @@ export const appHooks: HooksObject = {
   },
 
   after: {
-    all: [ log() ],
+    all: [],
     find: [],
     get: [],
     create: [],
@@ -23,7 +22,7 @@ export const appHooks: HooksObject = {
   },
 
   error: {
-    all: [ log() ],
+    all: [],
     find: [],
     get: [],
     create: [],

@@ -1,4 +1,3 @@
-// A hook that logs service method before, after and error
 import * as logger from 'winston';
 import { HookProps } from 'feathers-hooks';
 
