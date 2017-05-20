@@ -1,7 +1,7 @@
 import * as assert from 'assert';
 import * as rp from 'request-promise';
 import { StatusCodeError } from 'request-promise/errors';
-import { app } from '../src/app';
+import { app } from '../../src/app';
 
 describe('Feathers application tests', () => {
   before(function(done) {
