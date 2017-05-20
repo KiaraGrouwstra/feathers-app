@@ -9,5 +9,6 @@ export function createModel(app: feathers.Application) {
     autoload: true,
   });
 
+  Model.ensureIndex({ fieldName: 'email', unique: true }); 
   return Model;
 };

@@ -14,6 +14,7 @@ import * as socketio from 'feathers-socketio';
 import { middleware } from './middleware';
 import { services } from './services';
 import { appHooks } from './app.hooks';
+import { auth } from './authentication';
 
 export const app = <feathers.Application & { hooks: (hooks: HooksObject) => void }> feathers();
 
@@ -33,6 +34,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.configure(hooks());
 app.configure(rest());
 app.configure(socketio());
+app.configure(auth);
 
 // Set up our services (see `services/index.ts`)
 app.configure(services);
