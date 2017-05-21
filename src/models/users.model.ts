@@ -1,14 +1,18 @@
-import * as feathers from 'feathers';
-import * as NeDB from 'nedb';
-import * as path from 'path';
+// import * as R from 'ramda';
+// import * as feathers from 'feathers';
+// import * as NeDB from 'nedb';
+// import * as path from 'path';
 
-export function createModel(app: feathers.Application) {
-  const dbPath = app.get('nedb');
-  const Model = new NeDB({
-    filename: path.join(dbPath, 'users.db'),
-    autoload: true,
-  });
+// const name = 'users';
+// const uniques = ['email'];
 
-  Model.ensureIndex({ fieldName: 'email', unique: true }); 
-  return Model;
-};
+// export function createModel(app: feathers.Application) {
+//   const dbPath = app.get('nedb');
+//   const Model = new NeDB({
+//     filename: path.join(dbPath, `${name}.db`),
+//     autoload: true,
+//   });
+
+//   R.forEach((s: string) => Model.ensureIndex({ fieldName: s, unique: true }))(uniques);
+//   return Model;
+// };
